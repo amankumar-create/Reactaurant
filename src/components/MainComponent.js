@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { dishes } from '../shared/dishes';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
-class App extends Component {
+import DishDetail from './DishdetailComponent';
+class MainComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dishes: dishes,
             selectedDish: null
         }
+    }
+    onDishSelect(dishId) {
+        this.setState({
+            selectedDish: dishId
+        });
     }
     render() {
         return (
@@ -19,10 +25,13 @@ class App extends Component {
                     </div>
 
                 </Navbar>
-                <Menu dishes={this.state.dishes}></Menu>
+                <div className="container">
+                    <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}></Menu>
+                    <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+                </div>
             </div>
         );
     }
 }
 
-export default App;
+export default MainComponent;

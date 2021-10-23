@@ -25,11 +25,7 @@ class DishDetail extends Component {
                 <div></div>
             );
     }
-    renderComment(dishComment) {
-        return (
-            <p>{dishComment.comment}</p>
-        );
-    }
+
     renderComments(dish) {
         if (dish != null) return (
             <div className="container col-12 col-md-5 m-1">
@@ -42,7 +38,7 @@ class DishDetail extends Component {
                                     <p>{
                                         dishComment.comment}
                                     </p>
-                                    <p>{`--${dishComment.author}, ${dishComment.date}`}</p>
+                                    <p>{`--${dishComment.author}, ${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(dishComment.date)))}`}</p>
                                 </div>
                             </li>
                         );
