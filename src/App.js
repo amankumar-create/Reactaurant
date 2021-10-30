@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-
-import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
 import MainComponent from './components/MainComponent';
-import Menu from './components/MenuComponent';
+import { BrowserRouter } from 'react-router-dom';
 class App extends Component {
 
   render() {
     return (
-      <div>
-        <MainComponent />
-      </div>
+      <BrowserRouter>
+        <div>
+          <MainComponent />
+        </div>
+      </BrowserRouter>
     );
   }
 }
